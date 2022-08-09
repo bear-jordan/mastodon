@@ -1,0 +1,17 @@
+Intro
+- It's 2022... the world deserves to know. Who the fuck is Mastodon's lead singer?
+
+Inspiration
+- https://flowingdata.com/2017/09/06/cost-of-hurricane-harvey/
+- https://flowingdata.com/2017/10/26/how-to-make-a-semicircle-plot-in-r/
+
+Thought
+- Horizontal row representing the album
+- Vertical column representing the song position
+- Color representing the lead singer
+- Magnitude representing the time sung
+- Hue representing the words sung
+
+Other
+- Most unique words
+- ML model that generates a song for each person
