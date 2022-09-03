@@ -1,0 +1,112 @@
+---
+title: "Progress Update"
+author: "Bear Jordan"
+date: "2022-09-03"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r library}
+library(tidyverse)
+library(ggplot2)
+library(ggtext)
+library(ggwaffle)
+library(rjson)
+```
+
+```{r data}
+result <- fromJSON(file = "../Data/progress-updates.json")
+
+process_album <- function(album_index=1) {
+    data <- result$albums[[album_index]]
+    album_name <- data["album-name"]
+    album_id <- data["album-id"]
+    release_date <- data["release-date"]
+    
+    song_name <- list()
+    song_progress <- list()
+    song_id <- list()
+    
+    for (s in data$songs) {
+        song_name <- append(song_name, s["track-name"])
+        song_progress <- append(song_progress, s["progress"])
+        song_id <- append(song_id, s["track-id"])
+    }
+    
+    n_songs <- length(song_id)
+    album_name <- rep(album_name, n_songs)
+    album_id <- rep(album_id, n_songs)
+    release_date <- rep(release_date, n_songs)
+    
+    return(data.frame(a_name = unlist(album_name),
+                      a_id = unlist(album_id),
+                      date = unlist(release_date),
+                      s_name = unlist(song_name),
+                      s_prog = unlist(song_progress),
+                      s_id = unlist(song_id)))
+}
+
+
+build_dataframe <- function() {
+    data = data.frame()
+    for (a in 1:length(result$albums)) {
+        temp_df <- process_album(a)
+        data <- rbind(data, temp_df)
+    }
+    return(data)
+}
+figure_data <- build_dataframe() %>% 
+    select(a_id, s_prog)
+```
+
+Okay, so I will need a 8x15 plot.
+Songs I have completed will have be one color, songs I have not will be another, other songs will be na
+______
+||||||
+|||| |
+  || 
+  |
+  
+MSTDN
+
+```{r data}
+figure_data
+```
+
+```{r camcorder}
+gg_record(
+    dir = file.path(tempdir(),"recording"), # where to save the recording
+    device = "png", # device to use to save images
+    width = 3.75, # width of saved image
+    height = 7.7, # height of saved image
+    units = "in", # units for width and height
+    dpi = 600 # dpi to use when saving image
+)
+```
+
+```{r figure setup}
+theme_set(theme_void(base_family="Roboto Condensed"))
+theme_update(
+    legend.position="none",
+    plot.margin=margin(10, 10, 10, 10, unit="pt"),
+    plot.background=element_rect(fill="#333333"),
+    plot.title=element_markdown(color="grey90",
+                                size=20,
+                                family="Roboto Black",
+                                face="bold",
+                                lineheight=1),
+    plot.subtitle=element_markdown(color="grey70",
+                                   size=13,
+                                   lineheight=1.2,
+                                   margin=margin(t=15, b=60))
+)
+```
+
+```{r figure}
+ggplot(figure_data, aes(x=a_id, fill=s_prog)) +
+    geom_dotplot(dotsize = 1, stackgroups = TRUE, stackdir = "down", alpha=.6) +
+    scale_y_continuous(NULL, breaks = NULL)
+```
