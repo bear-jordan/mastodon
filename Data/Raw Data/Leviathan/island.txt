@@ -1,5 +1,5 @@
 @0:06
-[? screamer ?]
+[Brent Hinds]
 Given decision to live
 Not taken
 The flight towards the light
@@ -30,7 +30,7 @@ Founder of the Althing
 @1:09
 
 @1:27
-[? screamer ?]
+[Brent Hinds]
 Given decision to live
 Not taken
 The flight towards the light
@@ -50,7 +50,7 @@ Beward the Hammer of Thor
 @1:56
 
 @2:54
-[? Troy + Screamer ?]
+[Troy Sanders]
 Lava goddess
 Ice and fire
 Settling down
