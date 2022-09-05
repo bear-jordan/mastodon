@@ -15,3 +15,9 @@ Thought
 Other
 - Most unique words
 - ML model that generates a song for each person
+- Use hand labeled data as a training set and do automatic extraction
+- Spotify user ratings
+- Top Chart figure
+
+Notes
+- Volcalizations excluded
