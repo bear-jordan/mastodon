@@ -18,6 +18,9 @@ Other
 - Use hand labeled data as a training set and do automatic extraction
 - Spotify user ratings
 - Top Chart figure
+- Make generic song
+  - Use metrics like average time to first lyric etc...
+  - Pull from the distributions of everything
 
 Notes
 - Volcalizations excluded
