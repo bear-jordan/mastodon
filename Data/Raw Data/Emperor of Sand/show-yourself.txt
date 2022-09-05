@@ -1,4 +1,4 @@
-
+@0:01
 [Brann Dailor] 
 Show yourself 
 Show yourself 
@@ -11,14 +11,18 @@ Wild horses ride you through the valley
 Come alive 
 Come alive 
 Sail into the void without your worries 
+@0:30
 
+@0:30
 [Troy Sanders] 
 You're not as safe as far as I can tell 
 And I can tell 
 Only you can save yourself 
 Soon this will all be a distant memory 
 Or could this dream be real at all?
+@0:54
 
+@0:54
 [Brann Dailor] 
 Stars align 
 Stars align 
@@ -26,14 +30,18 @@ Stars can fall and get you into trouble
 Be afraid 
 Don't be afraid 
 Speak the ancient wisdom of the desert 
+@1:08
 
+@1:09
 [Troy Sanders] 
 You're not as safe as far as I can tell 
 And I can tell 
 Only you can save yourself 
 Soon this will all be a distant memory 
 Or could this dream be real at all?
+@1:34
 
+@2:31
 [Brann Dailor] 
 Show yourself Show yourself 
 I wanna see everything you're made of 
@@ -46,3 +54,4 @@ Death will come and steal you from the living
 Dead and gone 
 Dead and gone 
 I'll see you on the other side of fire
+@2:59
