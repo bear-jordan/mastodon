@@ -1,28 +1,47 @@
 using Dates
+using DataFrames
+using CSV
 
-# Expects: parse_album(pwd()*"/Blood Mountain/")
 # To Do:
 # Remove all instrumentals
-# Break apart ands to separate things
+
+function parse_dir(dir=pwd()*"/../Data/To Process/")
+	albums = dir.*readdir(dir)
+	mastodon = DataFrame(album=[], title=[], singer=[], timespan=[], lyrics=[])
+	[append!(mastodon, parse_album(album)) for album in albums]
+	return mastodon
+end
 
 function open_album(album)
-	return album.*readdir(album)
+	return album*"/".*readdir(album)
 end
 
 function parse_album(album)
 	songlist = open_album(album)
-	parsed_songs = []
+	parsed_singer = []
+	parsed_time = []
+	parsed_lyrics = []
+	parsed_title = []
+
 	for s in songlist
 		open(s, "r") do songfile
-			println("\nProcessing: "*s)
+			clean_title = parse_song_title(s)
+			println("\nProcessing: "*clean_title)
 			song = read(songfile, String)
 			song = replace(song, "\n\n"=>"--")
 			song = replace(song, "\n"=>" ")
-			songinfo = parse_song(song)
-			append!(parsed_songs, [parse_song_title(s), songinfo])
+			singer, t, l = parse_song(song)
+			ct = [clean_title for i in 1:length(singer)]
+			append!(parsed_title, ct)
+			append!(parsed_singer, singer)
+			append!(parsed_time, t)
+			append!(parsed_lyrics, l)
 		end
 	end
-	return [parse_album_title(album), parsed_songs]
+	clean_album_title = parse_album_title(album)
+	parsed_album_title = [clean_album_title for i in 1:length(parsed_singer)]
+	data = DataFrame(album=parsed_album_title, title=parsed_title, singer=parsed_singer, timespan=parsed_time, lyrics=parsed_lyrics)
+	return(data)
 end
 
 function parse_song_title(t)
@@ -33,16 +52,22 @@ end
 
 function parse_album_title(t)
 	t = split(t, "/")
-	return t[end-1]
+	return t[end]
 end
 
 function parse_song(song)
 	phrases = get_phrases(song)
-	parsed_phrases = []
+	parsed_singers = []
+	parsed_times = []
+	parsed_words = []
 	for phrase in phrases
-		append!(parsed_phrases, [parse_phrase(phrase)])
+		singer, time, words = parse_phrase(phrase)
+		append!(parsed_singers, [singer])
+		append!(parsed_times, time)
+		append!(parsed_words, [words])
 	end
-	return parsed_phrases
+
+	return parsed_singers, parsed_times, parsed_words
 end
 
 function get_phrases(song)
@@ -62,12 +87,18 @@ function parse_singer(phrase)
 	brann = "Brann Dailor"
 	brent = "Brent Hinds"
 	troy = "Troy Sanders"
+	eric = "Eric Saner"
+	scott = "Scott Kelly"
 	if occursin(brann, phrase)
 		return brann
 	elseif occursin(brent, phrase)
 		return brent
 	elseif occursin(troy, phrase)
 		return troy
+	elseif occursin(eric, phrase)
+		return eric
+	elseif occursin(scott, phrase)
+		return scott
 	else
 		return "Guest"
 	end
@@ -94,4 +125,5 @@ function parse_words(phrase)
 	return m.match
 end
 
-parse_album(pwd()*"/Blood Mountain/")
+mastodon = parse_dir()
+
