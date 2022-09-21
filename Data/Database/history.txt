@@ -1,0 +1,21 @@
+#V2
+CREATE TABLE albums (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, release_date DATETIME);
+CREATE album:1 SET name='Remission', release='28/05/2002');\nCREATE album:2 SET name='Leviathan', release='31/08/2004');\nCREATE album:3 SET name='Blood Mountain', release='12/09/2006');\nCREATE album:4 SET name='Crack the Skye', release='24/05/2009');\nCREATE album:5 SET name='The Hunter', release='27/09/2011');\nCREATE album:6 SET name='Once More Round the Sun', release='24/06/2014');\nCREATE album:7 SET name='Emperor of Sand', release='31/05/2017');\nCREATE album:8 SET name='Hushed and Grim', release='29/10/2021');\n
+CREATE album:1 SET name='Remission', release='28/05/2002');
+SELECT * FROM album
+CREATE company:surrealdb SET name = 'SurrealDB', cofounders = [person:tobie, person:jaime];
+CREATE album:1 SET name='Remission', release='28/05/2002';\nCREATE album:2 SET name='Leviathan', release='31/08/2004';\nCREATE album:3 SET name='Blood Mountain', release='12/09/2006';\nCREATE album:4 SET name='Crack the Skye', release='24/05/2009';\nCREATE album:5 SET name='The Hunter', release='27/09/2011';\nCREATE album:6 SET name='Once More Round the Sun', release='24/06/2014';\nCREATE album:7 SET name='Emperor of Sand', release='31/05/2017';\nCREATE album:8 SET name='Hushed and Grim', release='29/10/2021';\n
+exit()
+quit()
+select * from albums
+select * from album
+drop album
+delete * from album
+remove * from album
+delete album
+select * from album
+schema
+info *
+CREATE album:1 SET name='Remission', release='28/05/2002';\nCREATE album:2 SET name='Leviathan', release='31/08/2004';\nCREATE album:3 SET name='Blood Mountain', release='12/09/2006';\nCREATE album:4 SET name='Crack the Skye', release='24/05/2009';\nCREATE album:5 SET name='The Hunter', release='27/09/2011';\nCREATE album:6 SET name='Once More Round ''the Sun', release='24/06/2014';\nCREATE album:7 SET name='Emperor of Sand', release='31/05/2017';\nCREATE album:8 SET name='Hushed and Grim', release='29/10/2021';\n
+CREATE album:1 SET name="Remission", release="28/05/2002";\nCREATE album:2 SET name="Leviathan", release="31/08/2004";\nCREATE album:3 SET name="Blood Mountain", release="12/09/2006";\nCREATE album:4 SET name="Crack the Skye", release="24/05/2009";\nCREATE album:5 SET name="The Hunter", release="27/09/2011";\nCREATE album:6 SET name="Once More 'Round the Sun", release="24/06/2014";\nCREATE album:7 SET name="Emperor of Sand", release="31/05/2017";\nCREATE album:8 SET name="Hushed and Grim", release="29/10/2021";\n
+COMMIT TRANSACTION

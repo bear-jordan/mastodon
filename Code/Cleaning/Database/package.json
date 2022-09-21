@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "d3": "^7.6.1",
+    "lodash": "^4.17.21",
+    "lodash.js": "^0.0.1-security",
+    "surrealdb.js": "^0.4.0"
+  },
+  "name": "cleaning",
+  "version": "1.0.0",
+  "description": "cleaning dataset and migrating to surrealdb",
+  "main": "cleaner.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "bear jordan",
+  "license": "ISC"
+}
